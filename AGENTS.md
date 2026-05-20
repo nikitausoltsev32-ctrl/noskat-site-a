@@ -47,16 +47,16 @@ public/brand/  — logo-circle.png, hero-bg.png, banner.png
 - [x] **Task 3** — TypeScript типы (`types/index.ts`)
 - [x] **Task 4** — Mock данные (`data/`)
 - [x] **Task 5** — Утилиты (`lib/routes.ts`, `lib/utils.ts`, `lib/seo.ts`)
-- [ ] **Task 6** — UI компоненты (Button, Tag, Chip, Breadcrumbs, Pagination, SectionHeader)
-- [ ] **Task 7** — Header + Footer
-- [ ] **Task 8** — CookieBanner (localStorage + Яндекс.Метрика)
-- [ ] **Task 9** — Карточки (NewsCard, ArticleCard, BrandCard)
-- [ ] **Task 10** — Секции главной + сборка `app/page.tsx`
-- [ ] **Task 11** — Страницы новостей (`/news`, `/news/[slug]`, `/news/category/[slug]`, Sidebar, RelatedMaterials)
-- [ ] **Task 12** — Страницы статей (`/articles`, `/articles/[slug]`, `/articles/category/[slug]`)
-- [ ] **Task 13** — Страницы брендов (`/brands`, `/brands/[slug]` SEO-хаб)
-- [ ] **Task 14** — Статические и юридические страницы + 404
-- [ ] **Task 15** — sitemap.ts, robots.ts, @tailwindcss/typography, финальная сборка
+- [x] **Task 6** — UI компоненты (Button, Tag, Chip, Breadcrumbs, Pagination, SectionHeader)
+- [x] **Task 7** — Header + Footer
+- [x] **Task 8** — CookieBanner (localStorage + Яндекс.Метрика)
+- [x] **Task 9** — Карточки (NewsCard, ArticleCard, BrandCard)
+- [x] **Task 10** — Секции главной + сборка `app/page.tsx`
+- [x] **Task 11** — Страницы новостей (`/news`, `/news/[slug]`, `/news/category/[slug]`, Sidebar, RelatedMaterials)
+- [x] **Task 12** — Страницы статей (`/articles`, `/articles/[slug]`, `/articles/category/[slug]`)
+- [x] **Task 13** — Страницы брендов (`/brands`, `/brands/[slug]` SEO-хаб)
+- [x] **Task 14** — Статические и юридические страницы + 404
+- [x] **Task 15** — sitemap.ts, robots.ts, @tailwindcss/typography, финальная сборка
 
 ---
 
@@ -68,6 +68,16 @@ public/brand/  — logo-circle.png, hero-bg.png, banner.png
 2026-05-20 | Task 1 ✅ | Инициализирован проект, создана структура папок, скопированы ассеты | implementer
 -->
 
+2026-05-20 | Task 15 ✅ | sitemap.ts, robots.ts, @tailwindcss/typography, final build OK | implementer
+2026-05-20 | Task 14 ✅ | Static+legal pages (about, contacts, advertising, privacy, cookies, terms), 404 | implementer
+2026-05-20 | Task 13 ✅ | Brands pages: list + SEO hub with FAQ | implementer
+2026-05-20 | Task 12 ✅ | Articles pages: list, detail, category | implementer
+2026-05-20 | Task 11 ✅ | News pages: list, detail, category; Sidebar, RelatedMaterials | implementer
+2026-05-20 | Task 10 ✅ | Home page: all sections assembled | implementer
+2026-05-20 | Task 9 ✅ | Cards: NewsCard, ArticleCard, BrandCard | implementer
+2026-05-20 | Task 8 ✅ | CookieBanner: localStorage, analytics consent | implementer
+2026-05-20 | Task 7 ✅ | Header (sticky, mobile burger) + Footer (3-col nav) | implementer
+2026-05-20 | Task 6 ✅ | UI: Button, Tag, Chip, Breadcrumbs, Pagination, SectionHeader | implementer
 2026-05-20 | Task 5 ✅ | lib/routes.ts, lib/utils.ts, lib/seo.ts | implementer
 2026-05-20 | Task 4 ✅ | Mock данные: categories, news (6), articles (4), brands (9), faq | implementer
 2026-05-20 | Task 3 ✅ | TypeScript типы: NewsPost, Article, Brand, Category, FaqItem | implementer
