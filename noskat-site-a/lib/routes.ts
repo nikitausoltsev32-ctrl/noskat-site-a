@@ -1,0 +1,17 @@
+export const ROUTES = {
+  home: '/',
+  news: '/news',
+  newsDetail: (slug: string) => `/news/${slug}`,
+  newsCategory: (slug: string) => `/news/category/${slug}`,
+  articles: '/articles',
+  articleDetail: (slug: string) => `/articles/${slug}`,
+  articlesCategory: (slug: string) => `/articles/category/${slug}`,
+  brands: '/brands',
+  brand: (slug: string) => `/brands/${slug}`,
+  about: '/about',
+  contacts: '/contacts',
+  advertising: '/advertising',
+  privacy: '/legal/privacy',
+  cookies: '/legal/cookies',
+  terms: '/legal/terms',
+} as const
