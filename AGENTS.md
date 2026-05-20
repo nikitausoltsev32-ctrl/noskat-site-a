@@ -43,7 +43,7 @@ public/brand/  — logo-circle.png, hero-bg.png, banner.png
 Обновляй галочки по мере выполнения. После завершения задачи — запись в **Лог изменений**.
 
 - [x] **Task 1** — Инициализация проекта (create-next-app, структура папок, копирование ассетов)
-- [ ] **Task 2** — Design System (tailwind.config.ts, globals.css, layout.tsx)
+- [x] **Task 2** — Design System (tailwind.config.ts, globals.css, layout.tsx)
 - [ ] **Task 3** — TypeScript типы (`types/index.ts`)
 - [ ] **Task 4** — Mock данные (`data/`)
 - [ ] **Task 5** — Утилиты (`lib/routes.ts`, `lib/utils.ts`, `lib/seo.ts`)
@@ -68,6 +68,7 @@ public/brand/  — logo-circle.png, hero-bg.png, banner.png
 2026-05-20 | Task 1 ✅ | Инициализирован проект, создана структура папок, скопированы ассеты | implementer
 -->
 
+2026-05-20 | Task 2 ✅ | Design system: tailwind config с custom токенами, globals.css, layout.tsx со стабами | implementer
 2026-05-20 | Task 1 ✅ | Инициализирован Next.js проект, структура папок, скопированы ассеты | implementer
 
 _Лог пополняется по мере выполнения задач._
