@@ -16,8 +16,15 @@ export const metadata: Metadata = generateMeta({
   path: ROUTES.articles,
 })
 
-export default function ArticlesPage() {
+const PER_PAGE = 8
+
+export default async function ArticlesPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const { page } = await searchParams
+  const current = Math.max(1, parseInt(page ?? '1', 10) || 1)
   const popular = getPopularNews(5)
+  const total = Math.ceil(ARTICLES.length / PER_PAGE)
+  const articles = ARTICLES.slice((current - 1) * PER_PAGE, current * PER_PAGE)
+
   return (
     <div className="container py-10">
       <Breadcrumbs items={[{ label: 'Главная', href: ROUTES.home }, { label: 'Статьи' }]} />
@@ -30,9 +37,9 @@ export default function ArticlesPage() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
         <div>
           <div className="grid grid-cols-1 gap-3 mb-8">
-            {ARTICLES.map(a => <ArticleCard key={a.slug} article={a} />)}
+            {articles.map(a => <ArticleCard key={a.slug} article={a} />)}
           </div>
-          <Pagination current={1} total={1} buildHref={p => `${ROUTES.articles}?page=${p}`} />
+          <Pagination current={current} total={total} buildHref={p => `${ROUTES.articles}?page=${p}`} />
         </div>
         <Sidebar posts={popular} />
       </div>

@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE + ROUTES.brands, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: BASE + ROUTES.about, priority: 0.5, changeFrequency: 'monthly' as const },
     { url: BASE + ROUTES.contacts, priority: 0.5, changeFrequency: 'monthly' as const },
+    { url: BASE + ROUTES.advertising, priority: 0.5, changeFrequency: 'monthly' as const },
   ]
 
   const newsPages = NEWS.map(n => ({

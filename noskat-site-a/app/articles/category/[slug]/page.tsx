@@ -27,8 +27,19 @@ export default async function ArticlesCategoryPage({ params }: { params: Promise
   const articles = getArticlesByCategory(cat.slug)
   const popular = getPopularNews(5)
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://nosecutchina.ru' + ROUTES.home },
+      { '@type': 'ListItem', position: 2, name: 'Статьи', item: 'https://nosecutchina.ru' + ROUTES.articles },
+      { '@type': 'ListItem', position: 3, name: cat.name, item: 'https://nosecutchina.ru' + ROUTES.articlesCategory(cat.slug) },
+    ],
+  }
+
   return (
     <div className="container py-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Breadcrumbs items={[{ label: 'Главная', href: ROUTES.home }, { label: 'Статьи', href: ROUTES.articles }, { label: cat.name }]} />
       <h1 className="font-heading text-3xl font-bold uppercase tracking-wider text-text-primary mt-4 mb-2">{cat.name}</h1>
       <p className="text-text-muted text-sm mb-8">{cat.description}</p>

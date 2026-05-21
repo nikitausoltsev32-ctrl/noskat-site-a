@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { generateMeta, faqSchema } from '@/lib/seo'
-import { getLatestNews } from '@/data/news'
+import { getLatestNews, getPopularNews } from '@/data/news'
 import { getLatestArticles } from '@/data/articles'
 import { BRANDS } from '@/data/brands'
 import { MAIN_FAQ } from '@/data/faq'
@@ -9,6 +9,7 @@ import TodaySection from '@/components/sections/TodaySection'
 import NewsSection from '@/components/sections/NewsSection'
 import ArticlesSection from '@/components/sections/ArticlesSection'
 import CategoriesSection from '@/components/sections/CategoriesSection'
+import PopularSection from '@/components/sections/PopularSection'
 import BrandsSection from '@/components/sections/BrandsSection'
 import FaqSection from '@/components/sections/FaqSection'
 
@@ -22,6 +23,7 @@ export default function HomePage() {
   const latestNews = getLatestNews(6)
   const todayNews = getLatestNews(4)
   const articles = getLatestArticles(4)
+  const popular = getPopularNews(6)
 
   return (
     <>
@@ -34,6 +36,7 @@ export default function HomePage() {
       <NewsSection posts={latestNews} />
       <ArticlesSection articles={articles} />
       <CategoriesSection />
+      <PopularSection posts={popular} />
       <BrandsSection brands={BRANDS} />
       <FaqSection items={MAIN_FAQ} />
     </>

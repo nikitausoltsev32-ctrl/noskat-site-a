@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { generateMeta, articleSchema, breadcrumbSchema } from '@/lib/seo'
-import { ARTICLES, getArticleBySlug } from '@/data/articles'
+import { ARTICLES, getArticleBySlug, getLatestArticles } from '@/data/articles'
 import { getPopularNews } from '@/data/news'
 import { formatDate } from '@/lib/utils'
 import { ROUTES } from '@/lib/routes'
@@ -9,6 +9,8 @@ import { ALL_CATEGORIES } from '@/data/categories'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import Tag from '@/components/ui/Tag'
 import Sidebar from '@/components/ui/Sidebar'
+import ShareBlock from '@/components/ui/ShareBlock'
+import RelatedArticles from '@/components/sections/RelatedArticles'
 
 export function generateStaticParams() {
   return ARTICLES.map(a => ({ slug: a.slug }))
@@ -27,6 +29,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   if (!article) notFound()
   const cat = ALL_CATEGORIES.find(c => c.slug === article.category)
   const popular = getPopularNews(5)
+  const related = getLatestArticles(4).filter(a => a.slug !== article.slug && a.category === article.category).slice(0, 3)
 
   const schemas = [
     articleSchema({ title: article.title, description: article.excerpt, date: article.date, image: article.image, path: ROUTES.articleDetail(article.slug) }),
@@ -58,12 +61,19 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
               {article.title}
             </h1>
             <p className="text-text-secondary text-base leading-relaxed border-l-2 border-acc pl-4 mb-8">{article.excerpt}</p>
+            {article.image && (
+              <div className="mb-8 aspect-video overflow-hidden border border-border">
+                <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+              </div>
+            )}
             <div className="prose prose-invert max-w-none text-text-secondary leading-relaxed"
               dangerouslySetInnerHTML={{ __html: article.body }} />
+            <ShareBlock title={article.title} />
           </article>
           <Sidebar posts={popular} />
         </div>
       </div>
+      <RelatedArticles articles={related} />
     </>
   )
 }

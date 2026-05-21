@@ -8,6 +8,7 @@ import { ROUTES } from '@/lib/routes'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import NewsCard from '@/components/cards/NewsCard'
 import ArticleCard from '@/components/cards/ArticleCard'
+import BrandCard from '@/components/cards/BrandCard'
 import FaqSection from '@/components/sections/FaqSection'
 import SectionHeader from '@/components/ui/SectionHeader'
 
@@ -33,6 +34,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
   const brandNews = brand.newsIds.map(id => getNewsBySlug(id)).filter((p): p is NonNullable<typeof p> => p !== undefined)
   const brandArticles = brand.articleIds.map(id => getArticleBySlug(id)).filter((a): a is NonNullable<typeof a> => a !== undefined)
+  const similarBrands = BRANDS.filter(b => b.slug !== brand.slug).slice(0, 4)
 
   const schemas = [
     breadcrumbSchema([
@@ -81,6 +83,15 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         )}
 
         {brand.faq.length > 0 && <FaqSection items={brand.faq} />}
+
+        {similarBrands.length > 0 && (
+          <section className="mt-10">
+            <SectionHeader title="Похожие бренды" href={ROUTES.brands} />
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {similarBrands.map(b => <BrandCard key={b.slug} brand={b} />)}
+            </div>
+          </section>
+        )}
       </div>
     </>
   )

@@ -17,10 +17,12 @@ export const metadata: Metadata = generateMeta({
 
 const PER_PAGE = 6
 
-export default function NewsPage() {
+export default async function NewsPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const { page } = await searchParams
+  const current = Math.max(1, parseInt(page ?? '1', 10) || 1)
   const popular = getPopularNews(5)
   const total = Math.ceil(NEWS.length / PER_PAGE)
-  const posts = NEWS.slice(0, PER_PAGE)
+  const posts = NEWS.slice((current - 1) * PER_PAGE, current * PER_PAGE)
 
   return (
     <div className="container py-10">
@@ -36,7 +38,7 @@ export default function NewsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             {posts.map(post => <NewsCard key={post.slug} post={post} />)}
           </div>
-          <Pagination current={1} total={total} buildHref={p => `${ROUTES.news}?page=${p}`} />
+          <Pagination current={current} total={total} buildHref={p => `${ROUTES.news}?page=${p}`} />
         </div>
         <Sidebar posts={popular} />
       </div>

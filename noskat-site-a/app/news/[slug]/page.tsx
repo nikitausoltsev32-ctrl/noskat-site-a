@@ -8,6 +8,7 @@ import { ALL_CATEGORIES } from '@/data/categories'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import Tag from '@/components/ui/Tag'
 import Sidebar from '@/components/ui/Sidebar'
+import ShareBlock from '@/components/ui/ShareBlock'
 import RelatedMaterials from '@/components/sections/RelatedMaterials'
 
 export function generateStaticParams() {
@@ -62,8 +63,14 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
               {post.title}
             </h1>
             <p className="text-text-secondary text-base leading-relaxed border-l-2 border-acc pl-4 mb-8">{post.excerpt}</p>
+            {post.image && (
+              <div className="mb-8 aspect-video overflow-hidden border border-border">
+                <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+              </div>
+            )}
             <div className="prose prose-invert max-w-none text-text-secondary leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.body }} />
+            <ShareBlock title={post.title} />
           </article>
           <Sidebar posts={popular} />
         </div>
