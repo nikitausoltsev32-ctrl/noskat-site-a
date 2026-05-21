@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOSECUT CHINA — Ноускаты из Китая: новости, обзоры, поставки</title>
+<meta name="description" content="Информационный портал о ноускатах и передних частях автомобилей из Китая. Новости, обзоры, кейсы и аналитика рынка.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<style>
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:     #0d0d0e;
+  --bg2:    #111112;
+  --bg3:    #1a1a1c;
+  --bg4:    #222224;
+  --acc:    #E02020;
+  --text:   #e8e8e8;
+  --text2:  #888;
+  --border: #1e1e20;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'PT Sans', sans-serif; font-size: 15px; line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; cursor: pointer; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; color: inherit; }
+ul { list-style: none; }
+input, textarea { box-sizing: border-box; }
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* ── Card ───────────────────────────────────────────────────── */
+.nc-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+  cursor: pointer;
+}
+.nc-card:hover {
+  border-color: var(--acc);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+
+/* ── Section title ──────────────────────────────────────────── */
+.nc-section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 17px; font-weight: 700;
+  letter-spacing: .5px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px; color: #ddd;
+}
+.nc-section-title::before {
+  content: ''; display: block;
+  width: 4px; height: 18px;
+  background: var(--acc); border-radius: 2px; flex-shrink: 0;
+}
+
+/* ── Ticker animation ───────────────────────────────────────── */
+@keyframes ncTicker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Page fade ──────────────────────────────────────────────── */
+@keyframes ncFade {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nc-page { animation: ncFade .28s ease; }
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .container { padding: 0 16px; }
+  [style*="gridTemplateColumns: 1fr 300px"],
+  [style*="grid-template-columns: 1fr 300px"],
+  [style*="gridTemplateColumns: 1fr 260px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gridTemplateColumns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 720px) {
+  [style*="gridTemplateColumns: repeat(3"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  [style*="gridTemplateColumns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  [style*="gridTemplateColumns: repeat(5"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  h1[style*="fontSize: 42"] { font-size: 28px !important; }
+  h1[style*="fontSize: 44"] { font-size: 28px !important; }
+  h1[style*="fontSize: 32"] { font-size: 24px !important; }
+}
+@media (max-width: 480px) {
+  h1[style*="fontSize: 44"] { font-size: 22px !important; }
+  h1[style*="fontSize: 42"] { font-size: 22px !important; }
+
+  [style*="gridTemplateColumns: 1fr 2fr"],
+  [style*="gridTemplateColumns: 3fr 2fr"],
+  [style*="gridTemplateColumns: 2fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gridTemplateColumns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  footer [style*="gridTemplateColumns: 2fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ── Mobile burger show ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nc-burger { display: flex !important; }
+  nav { display: none !important; }
+}
+
+/* ── Hero mobile fixes ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nc-hero-content { padding: 40px 16px 20px 16px !important; }
+  .nc-hero-car { display: none !important; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="nc-data-v2.jsx"></script>
+<script type="text/babel" src="nc-components-v2.jsx"></script>
+<script type="text/babel" src="nc-home-v2.jsx"></script>
+<script type="text/babel" src="nc-news-v2.jsx"></script>
+<script type="text/babel" src="nc-articles-v2.jsx"></script>
+<script type="text/babel" src="nc-static-v2.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = { accentColor: '#E02020', reviewLayout: 'grid' };
+
+function App() {
+  const [page, setPage]       = useState('home');
+  const [params, setParams]   = useState({});
+  const [tweaks, setTweaks]   = useState(TWEAK_DEFAULTS);
+  const [cookieDone, setCookieDone] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--acc', tweaks.accentColor);
+  }, [tweaks.accentColor]);
+
+  const navigate = (p, ps = {}) => {
+    setPage(p);
+    setParams(ps);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const renderPage = () => {
+    const {
+      HomePageV2,
+      NewsListPage, NewsCatPage, NewsDetailPage,
+      ArticlesListPage, ArticlesCatPage, ArticleDetailPage,
+      BrandsListPage, BrandPage,
+      AboutPage, ContactsPage, AdvertisingPage,
+      PrivacyPage, CookiesPage, TermsPage,
+      NotFoundPage, NoscatInfoPage,
+    } = window;
+
+    switch (page) {
+      case 'home':           return <HomePageV2 navigate={navigate} reviewLayout={tweaks.reviewLayout} />;
+      case 'news':           return <NewsListPage navigate={navigate} />;
+      case 'news-cat':       return <NewsCatPage navigate={navigate} cat={params.cat || 'Рынок'} />;
+      case 'news-detail':    return <NewsDetailPage navigate={navigate} article={params.article} />;
+      case 'articles':       return <ArticlesListPage navigate={navigate} />;
+      case 'articles-cat':   return <ArticlesCatPage navigate={navigate} cat={params.cat || 'Обзоры'} />;
+      case 'article-detail': return <ArticleDetailPage navigate={navigate} article={params.article} />;
+      case 'brands':         return <BrandsListPage navigate={navigate} />;
+      case 'brand':          return <BrandPage navigate={navigate} brand={params.brand} />;
+      case 'about':          return <AboutPage navigate={navigate} />;
+      case 'contacts':       return <ContactsPage navigate={navigate} />;
+      case 'advertising':    return <AdvertisingPage navigate={navigate} />;
+      case 'legal-privacy':  return <PrivacyPage navigate={navigate} />;
+      case 'legal-cookies':  return <CookiesPage navigate={navigate} />;
+      case 'legal-terms':       return <TermsPage navigate={navigate} />;
+      case 'what-is-noscat':    return <NoscatInfoPage navigate={navigate} />;
+      default:                  return <NotFoundPage navigate={navigate} />;
+    }
+  };
+
+  const { V2Cookie } = window;
+
+  return (
+    <div className="nc-page" key={page}>
+      {!cookieDone && <V2Cookie onAccept={() => setCookieDone(true)} />}
+      {renderPage()}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
