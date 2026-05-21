@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NOSECUT CHINA
 
-## Getting Started
+**Информационный портал про ноускаты из Китая**
 
-First, run the development server:
+Новости китайского авторынка, обзоры ноускатов, брендовые SEO-хабы, статьи про поставки, логистику и таможню.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🌐 **[noskat-site-a.vercel.app](https://noskat-site-a.vercel.app)**
+
+---
+
+## Стек
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Язык | TypeScript |
+| Стили | Tailwind CSS |
+| Деплой | Vercel |
+
+---
+
+## Страницы
+
+```
+/                          — Главная
+/news                      — Список новостей
+/news/[slug]               — Детальная новость
+/news/category/[slug]      — Категория новостей
+/articles                  — Список статей
+/articles/[slug]           — Детальная статья
+/articles/category/[slug]  — Категория статей
+/brands                    — Список брендов
+/brands/[slug]             — Брендовый SEO-хаб
+/about                     — О проекте
+/contacts                  — Контакты
+/advertising               — Реклама
+/legal/privacy             — Политика конфиденциальности
+/legal/cookies             — Cookie-политика
+/legal/terms               — Пользовательское соглашение
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## SEO
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `title` / `description` / `canonical` на каждой странице
+- OpenGraph с image и type
+- `Article` JSON-LD на детальных страницах новостей и статей
+- `BreadcrumbList` JSON-LD на всех внутренних страницах
+- `FAQPage` JSON-LD на главной и брендовых хабах
+- `sitemap.xml` — все маршруты
+- `robots.txt`
+- Нумерованная пагинация (не infinite scroll)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Безопасность
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Security headers на всех маршрутах:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Cookie
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Баннер при первом заходе:
+
+- **Принять всё** — включает аналитику
+- **Только необходимые** — без аналитики
+- **Настройки** — toggle для Яндекс.Метрики
+
+Выбор сохраняется в `localStorage`. Яндекс.Метрика загружается только после согласия.
+
+---
+
+## Структура
+
+```
+/app              — маршруты (App Router)
+/components
+  /cards          — NewsCard, ArticleCard, BrandCard
+  /layout         — Header, Footer
+  /sections       — Hero, FAQ, Today, Popular, Brands и др.
+  /ui             — Button, Tag, Chip, Breadcrumbs, Pagination, Sidebar, ShareBlock
+/data             — mock-данные (news, articles, brands, categories, faq)
+/lib              — seo.ts, routes.ts, utils.ts
+/public/brand     — логотип и изображения
+```
+
+---
+
+## Запуск
+
+```bash
+npm install
+npm run dev
+```
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## Бренды
+
+Haval · Chery · Geely · Changan · BYD · Exeed · Tank · Li Auto · Zeekr
