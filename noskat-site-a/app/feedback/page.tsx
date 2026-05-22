@@ -5,7 +5,7 @@ import FeedbackForm from '@/components/ui/FeedbackForm'
 import { ROUTES } from '@/lib/routes'
 
 export const metadata: Metadata = generateMeta({
-  title: 'Обратная связь — NOSECUT CHINA',
+  title: 'Обратная связь',
   description: 'Форма обратной связи: вопросы по работе сайта, жалобы, запросы по 152-ФЗ и предложения.',
   path: ROUTES.feedback,
 })

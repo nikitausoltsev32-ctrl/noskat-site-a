@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { clsx } from 'clsx'
 import { ROUTES } from '@/lib/routes'
+import CookieSettingsButton from '@/components/ui/CookieSettingsButton'
 
 const NAV = [
   { label: 'Новости', href: ROUTES.news },
@@ -57,6 +58,10 @@ export default function Header() {
           })}
         </nav>
 
+        <div className="hidden md:block ml-auto shrink-0">
+          <CookieSettingsButton context="header" />
+        </div>
+
         <button
           className="md:hidden ml-auto p-2 text-text-muted hover:text-text-primary"
           onClick={() => setOpen(!open)}
@@ -79,6 +84,9 @@ export default function Header() {
               {label}
             </Link>
           ))}
+          <div className="px-4 py-3 border-t border-border">
+            <CookieSettingsButton context="header" />
+          </div>
         </div>
       )}
     </header>
