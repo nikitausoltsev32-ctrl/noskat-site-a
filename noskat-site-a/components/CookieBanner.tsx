@@ -17,6 +17,13 @@ export default function CookieBanner() {
       const consent: Consent = JSON.parse(saved)
       if (consent.analytics) loadMetrika()
     }
+
+    function handleOpen() {
+      setSettings(false)
+      setVisible(true)
+    }
+    window.addEventListener('open-cookie-settings', handleOpen)
+    return () => window.removeEventListener('open-cookie-settings', handleOpen)
   }, [])
 
   function loadMetrika() {

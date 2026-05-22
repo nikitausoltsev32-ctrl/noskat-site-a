@@ -14,4 +14,5 @@ export const ROUTES = {
   privacy: '/legal/privacy',
   cookies: '/legal/cookies',
   terms: '/legal/terms',
+  feedback: '/feedback',
 } as const

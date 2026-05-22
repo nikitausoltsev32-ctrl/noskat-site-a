@@ -13,7 +13,7 @@ export default function PopularSection({ posts }: { posts: NewsPost[] }) {
         {posts.map((post, i) => (
           <Link key={post.slug} href={ROUTES.newsDetail(post.slug)}
             className="group flex gap-4 bg-bg-card border border-border p-4 hover:border-acc transition-colors">
-            <span className="font-heading text-4xl font-bold text-border group-hover:text-acc transition-colors shrink-0 leading-none">
+            <span className="font-heading text-4xl font-bold text-text-primary group-hover:text-acc transition-colors shrink-0 leading-none">
               {String(i + 1).padStart(2, '0')}
             </span>
             <div className="min-w-0">
