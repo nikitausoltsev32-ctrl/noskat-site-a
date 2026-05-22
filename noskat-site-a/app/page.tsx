@@ -5,12 +5,14 @@ import { getLatestArticles } from '@/data/articles'
 import { BRANDS } from '@/data/brands'
 import { MAIN_FAQ } from '@/data/faq'
 import HeroPortal from '@/components/sections/HeroPortal'
+import AboutNoskatSection from '@/components/sections/AboutNoskatSection'
 import TodaySection from '@/components/sections/TodaySection'
 import NewsSection from '@/components/sections/NewsSection'
 import ArticlesSection from '@/components/sections/ArticlesSection'
 import CategoriesSection from '@/components/sections/CategoriesSection'
 import PopularSection from '@/components/sections/PopularSection'
 import BrandsSection from '@/components/sections/BrandsSection'
+import PromoFillerSection from '@/components/sections/PromoFillerSection'
 import FaqSection from '@/components/sections/FaqSection'
 
 export const metadata: Metadata = generateMeta({
@@ -32,12 +34,14 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(MAIN_FAQ)) }}
       />
       <HeroPortal />
+      <AboutNoskatSection />
       <TodaySection posts={todayNews} />
       <NewsSection posts={latestNews} />
       <ArticlesSection articles={articles} />
       <CategoriesSection />
       <PopularSection posts={popular} />
       <BrandsSection brands={BRANDS} />
+      <PromoFillerSection />
       <FaqSection items={MAIN_FAQ} />
     </>
   )

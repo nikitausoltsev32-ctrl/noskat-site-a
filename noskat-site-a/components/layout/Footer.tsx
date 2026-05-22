@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ROUTES } from '@/lib/routes'
+import CookieSettingsButton from '@/components/ui/CookieSettingsButton'
 
 const SECTIONS = [
   { title: 'Контент', links: [
@@ -10,6 +11,7 @@ const SECTIONS = [
   { title: 'Портал', links: [
     { label: 'О проекте', href: ROUTES.about },
     { label: 'Контакты', href: ROUTES.contacts },
+    { label: 'Обратная связь', href: ROUTES.feedback },
     { label: 'Реклама', href: ROUTES.advertising },
   ]},
   { title: 'Правовая информация', links: [
@@ -43,6 +45,11 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                {s.title === 'Правовая информация' && (
+                  <li>
+                    <CookieSettingsButton />
+                  </li>
+                )}
               </ul>
             </div>
           ))}
